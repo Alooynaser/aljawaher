@@ -1,0 +1,168 @@
+/* ===== ألوان الروضة (مأخوذة من الشعار) ===== */
+:root {
+  --pink: #c2185b;
+  --pink-soft: #fce4ef;
+  --teal: #29b6d1;
+  --teal-soft: #e3f6fa;
+  --navy: #1e2a44;
+  --text: #3a4458;
+  --bg: #fffdfb;
+  --white: #ffffff;
+  --radius: 22px;
+  --shadow: 0 10px 30px rgba(30, 42, 68, .08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  font-family: "Baloo Bhaijaan 2", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  font-size: 18px;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, 100% - 32px); margin-inline: auto; }
+.center { text-align: center; }
+
+h1, h2, h3 { color: var(--navy); line-height: 1.25; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 1rem; }
+h3 { font-size: 1.3rem; margin-bottom: .4rem; }
+
+/* ===== الأزرار ===== */
+.btn {
+  display: inline-block;
+  padding: .75rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--pink); color: var(--white); box-shadow: 0 8px 20px rgba(194, 24, 91, .3); }
+.btn-ghost { border: 2px solid var(--teal); color: var(--navy); }
+.btn-ghost:hover { background: var(--teal-soft); }
+.btn-light { background: var(--white); color: var(--pink); white-space: nowrap; }
+
+/* ===== الهيدر ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 253, 251, .92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #f1e6ea;
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 1rem; }
+.brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; font-size: 1.25rem; color: var(--navy); }
+.brand img { border-radius: 50%; }
+.menu { display: flex; gap: 1.8rem; font-weight: 600; }
+.menu a:hover { color: var(--pink); }
+.nav-actions { display: flex; align-items: center; gap: .5rem; }
+.lang-btn {
+  font: inherit; font-weight: 700; cursor: pointer;
+  border: 2px solid var(--pink); color: var(--pink); background: none;
+  border-radius: 999px; padding: .2rem .9rem;
+}
+.lang-btn:hover { background: var(--pink-soft); }
+.menu-btn { display: none; background: none; border: 0; cursor: pointer; padding: .5rem; }
+.menu-btn span { display: block; width: 24px; height: 3px; background: var(--navy); border-radius: 3px; margin: 4px 0; }
+
+/* ===== الواجهة ===== */
+.hero { padding: 4rem 0 5rem; background: radial-gradient(circle at 85% 20%, var(--pink-soft), transparent 45%), radial-gradient(circle at 10% 90%, var(--teal-soft), transparent 40%); }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+.eyebrow { color: var(--teal); font-weight: 700; margin-bottom: .6rem; }
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--pink); }
+.motto { margin: 1rem 0 1.8rem; letter-spacing: .08em; color: var(--navy); font-weight: 600; opacity: .7; direction: ltr; text-align: start; }
+html[dir="rtl"] .motto { text-align: right; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; }
+.hero-media { position: relative; padding-bottom: 2.5rem; }
+.hero-main { width: 82%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); margin-inline-start: auto; }
+.hero-small {
+  position: absolute; bottom: 0; inset-inline-start: 0;
+  width: 42%; aspect-ratio: 1; object-fit: cover; object-position: top;
+  border-radius: var(--radius); border: 6px solid var(--bg); box-shadow: var(--shadow);
+}
+.gem { position: absolute; top: -18px; inset-inline-start: 12%; font-size: 3rem; color: var(--teal); transform: rotate(-12deg); }
+
+/* ===== الأقسام ===== */
+.section { padding: 5rem 0; }
+.section-tint { background: var(--teal-soft); }
+.about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center; }
+.about-img { border-radius: var(--radius); aspect-ratio: 4 / 4.4; object-fit: cover; box-shadow: var(--shadow); }
+.about-grid p + p { margin-top: 1rem; }
+
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin-top: 2rem; }
+.card { background: var(--white); border-radius: var(--radius); padding: 1.8rem 1.4rem; box-shadow: var(--shadow); text-align: center; }
+.card-icon { width: 72px; height: 72px; display: grid; place-items: center; margin: 0 auto 1rem; border-radius: 50%; background: var(--pink-soft); color: var(--pink); }
+.card:nth-child(even) .card-icon { background: var(--teal-soft); color: var(--teal); }
+.card p { font-size: 1rem; }
+
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 240px; gap: 1rem; margin: 2rem 0; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+.gallery .wide { grid-column: span 2; }
+
+.timeline { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2rem; }
+.timeline li {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 1.8rem 1rem; text-align: center; font-weight: 600; color: var(--navy);
+  display: flex; flex-direction: column; gap: .2rem;
+}
+.timeline .time { font-size: 2.2rem; font-weight: 800; color: var(--pink); line-height: 1.2; }
+
+.wa-float {
+  position: fixed; bottom: 20px; inset-inline-end: 20px; z-index: 60;
+  width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
+  background: #25d366; color: var(--white); box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+.register { padding: 5rem 0 1rem; }
+.register-box {
+  background: linear-gradient(120deg, var(--pink), #e0548c);
+  color: var(--white); border-radius: calc(var(--radius) + 8px);
+  padding: 2.6rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+}
+.register-box h2 { color: var(--white); margin-bottom: .3rem; }
+
+.contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin-top: 2rem; }
+.contact-card {
+  display: flex; flex-direction: column; align-items: center; gap: .3rem;
+  background: var(--white); border: 2px solid #f1e6ea; border-radius: var(--radius); padding: 2rem 1rem;
+  transition: border-color .2s, transform .2s;
+}
+.contact-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+.contact-icon { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; background: var(--teal-soft); color: var(--teal); margin-bottom: .4rem; transition: background .2s, color .2s; }
+.contact-icon svg { width: 28px; height: 28px; }
+.contact-card:hover .contact-icon { background: var(--teal); color: var(--white); }
+.contact-card strong { color: var(--navy); font-size: 1.15rem; }
+
+/* ===== الفوتر ===== */
+.site-footer { background: var(--navy); color: #cfd6e4; padding: 2rem 0; margin-top: 3rem; }
+.footer-inner { display: flex; align-items: center; justify-content: center; gap: 1rem; text-align: center; }
+.footer-inner img { border-radius: 50%; }
+
+/* ===== الجوال ===== */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 2.5rem; }
+  .cards, .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+  .register-box { flex-direction: column; text-align: center; }
+}
+@media (max-width: 720px) {
+  .menu-btn { display: block; }
+  .menu {
+    display: none; position: absolute; top: 76px; inset-inline: 0;
+    flex-direction: column; gap: 0; background: var(--white); box-shadow: var(--shadow);
+  }
+  .menu.open { display: flex; }
+  .menu a { padding: 1rem 1.5rem; border-top: 1px solid #f1e6ea; }
+  .brand span { font-size: 1.05rem; }
+  .cards, .contact-grid, .timeline { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery .wide { grid-column: auto; }
+  .section { padding: 3.5rem 0; }
+  .register-box { padding: 2rem 1.4rem; }
+  .footer-inner { flex-direction: column; }
+}
