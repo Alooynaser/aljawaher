@@ -23,6 +23,10 @@ function renderClassSelect() {
   $('#newLessonBtn').disabled = !classId;
 }
 
+$('#newLessonBtn').addEventListener('click', e => {
+  withBusy(e.currentTarget, () => openEditor(null));
+});
+
 $('#classSelect').addEventListener('change', e => {
   classId = e.target.value;
   try { localStorage.setItem(CLASS_KEY, classId); } catch (err) {}
@@ -74,8 +78,8 @@ $('#lessonList').addEventListener('click', e => {
   const b = e.target.closest('button[data-act]');
   if (!b) return;
   const id = b.dataset.id;
-  if (b.dataset.act === 'edit') openEditor(id);
-  if (b.dataset.act === 'subs') openSubs(id);
+  if (b.dataset.act === 'edit') withBusy(b, () => openEditor(id));
+  if (b.dataset.act === 'subs') withBusy(b, () => openSubs(id));
   if (b.dataset.act === 'del') deleteLesson(id, b);
 });
 
