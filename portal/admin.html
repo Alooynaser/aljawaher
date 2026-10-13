@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الإدارة | روضة الجواهر</title>
+  <link rel="icon" href="../images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body class="portal">
+
+  <header class="site-header portal-header">
+    <div class="container nav">
+      <a href="../index.html" class="brand">
+        <img src="../images/logo.jpg" alt="شعار روضة الجواهر" width="44" height="44">
+        <span data-ar="روضة الجواهر" data-en="Aljawaher KG">روضة الجواهر</span>
+      </a>
+      <div class="portal-nav">
+        <a href="admin.html" class="active" data-ar="الإدارة" data-en="Admin">الإدارة</a>
+        <a href="teacher.html" data-ar="الدروس" data-en="Lessons">الدروس</a>
+        <button class="link-btn" id="logoutBtn" type="button" data-ar="خروج" data-en="Log out">خروج</button>
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-title">
+        <div>
+          <h1 data-ar="لوحة الإدارة" data-en="Admin dashboard">لوحة الإدارة</h1>
+          <p class="muted" data-ar="أضف الفصول والطلاب، واطبع أكواد التفعيل، وادعُ المدرسين." data-en="Add classes and students, print activation codes, and invite teachers.">أضف الفصول والطلاب، واطبع أكواد التفعيل، وادعُ المدرسين.</p>
+        </div>
+      </div>
+
+      <!-- الفصول -->
+      <section class="panel">
+        <h2 data-ar="١. الفصول" data-en="1. Classes">١. الفصول</h2>
+        <div class="list" id="classList" style="margin-bottom:1rem"></div>
+        <form class="form-row" id="classForm">
+          <label class="field"><span data-ar="اسم الفصل (عربي)" data-en="Class name (Arabic)">اسم الفصل (عربي)</span>
+            <input type="text" name="name_ar" required placeholder="KG1 - أ">
+          </label>
+          <label class="field"><span data-ar="اسم الفصل (إنجليزي)" data-en="Class name (English)">اسم الفصل (إنجليزي)</span>
+            <input type="text" name="name_en" placeholder="KG1 - A" dir="ltr">
+          </label>
+          <button class="btn btn-teal" type="submit" data-ar="إضافة فصل" data-en="Add class">إضافة فصل</button>
+        </form>
+      </section>
+
+      <!-- الطلاب -->
+      <section class="panel">
+        <div class="panel-head">
+          <h2 data-ar="٢. الطلاب وأكواد التفعيل" data-en="2. Students &amp; activation codes">٢. الطلاب وأكواد التفعيل</h2>
+          <div class="item-actions">
+            <select id="studentFilter" aria-label="filter"></select>
+            <button class="btn btn-ghost btn-sm" id="printBtn" type="button" data-ar="🖨️ طباعة الأكواد" data-en="🖨️ Print codes">🖨️ طباعة الأكواد</button>
+          </div>
+        </div>
+
+        <form class="form" id="studentForm" style="margin-bottom:1.2rem">
+          <div class="form-row">
+            <label class="field"><span data-ar="الفصل" data-en="Class">الفصل</span>
+              <select name="class_id" id="studentClass" required></select>
+            </label>
+            <label class="field"><span data-ar="أسماء الطلاب (اسم في كل سطر)" data-en="Student names (one per line)">أسماء الطلاب (اسم في كل سطر)</span>
+              <textarea name="names" required style="min-height:46px" placeholder="محمد أحمد&#10;سارة علي"></textarea>
+            </label>
+            <button class="btn btn-teal" type="submit" data-ar="إضافة الطلاب" data-en="Add students">إضافة الطلاب</button>
+          </div>
+        </form>
+
+        <div class="table-wrap" id="studentTable"></div>
+      </section>
+
+      <!-- المدرسين -->
+      <section class="panel">
+        <h2 data-ar="٣. المدرسين" data-en="3. Teachers">٣. المدرسين</h2>
+        <form class="form-row" id="inviteForm" style="margin-bottom:1.2rem">
+          <label class="field"><span data-ar="اسم المدرس" data-en="Teacher name">اسم المدرس</span>
+            <input type="text" name="full_name" required>
+          </label>
+          <label class="field"><span data-ar="الفصل" data-en="Class">الفصل</span>
+            <select name="class_id" id="inviteClass"></select>
+          </label>
+          <button class="btn btn-teal" type="submit" data-ar="إنشاء كود دعوة" data-en="Create invite code">إنشاء كود دعوة</button>
+        </form>
+        <div class="table-wrap" id="teacherTable"></div>
+        <h3 style="margin:1.5rem 0 .6rem" data-ar="أكواد الدعوة" data-en="Invite codes">أكواد الدعوة</h3>
+        <div class="table-wrap" id="inviteTable"></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="print-cards" id="printCards"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.0/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="../script.js"></script>
+  <script src="portal.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -166,3 +166,7 @@ html[dir="rtl"] .motto { text-align: right; }
   .register-box { padding: 2rem 1.4rem; }
   .footer-inner { flex-direction: column; }
 }
+
+/* ===== رابط البوابة في القائمة ===== */
+.menu a.portal-link { background: var(--pink-soft); color: var(--pink); padding: .2rem .9rem; border-radius: 999px; }
+@media (max-width: 720px) { .menu a.portal-link { border-radius: 0; padding: 1rem 1.5rem; } }

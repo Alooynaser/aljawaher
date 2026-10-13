@@ -7,13 +7,19 @@ function setLang(lang) {
   document.querySelectorAll('[data-ar]').forEach(el => {
     el.innerHTML = el.dataset[lang];
   });
-  langBtn.textContent = lang === 'ar' ? 'EN' : 'ع';
+  document.querySelectorAll('[data-ph-ar]').forEach(el => {
+    el.placeholder = lang === 'ar' ? el.dataset.phAr : el.dataset.phEn;
+  });
+  if (langBtn) langBtn.textContent = lang === 'ar' ? 'EN' : 'ع';
   try { localStorage.setItem('lang', lang); } catch (e) {}
+  document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
 }
 
-langBtn.addEventListener('click', () => {
-  setLang(document.documentElement.lang === 'ar' ? 'en' : 'ar');
-});
+if (langBtn) {
+  langBtn.addEventListener('click', () => {
+    setLang(document.documentElement.lang === 'ar' ? 'en' : 'ar');
+  });
+}
 
 let saved = 'ar';
 try { saved = localStorage.getItem('lang') || 'ar'; } catch (e) {}
@@ -22,11 +28,14 @@ if (saved !== 'ar') setLang(saved);
 // ===== قائمة الجوال =====
 const menuBtn = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
-menuBtn.addEventListener('click', () => {
-  const open = menu.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', open);
-});
-menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+if (menuBtn && menu) {
+  menuBtn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+}
 
 // ===== سنة الفوتر =====
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();

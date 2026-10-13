@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>دخول البوابة | روضة الجواهر</title>
+  <link rel="icon" href="../images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body class="portal">
+
+  <header class="site-header portal-header">
+    <div class="container nav">
+      <a href="../index.html" class="brand">
+        <img src="../images/logo.jpg" alt="شعار روضة الجواهر" width="44" height="44">
+        <span data-ar="روضة الجواهر" data-en="Aljawaher KG">روضة الجواهر</span>
+      </a>
+      <div class="portal-nav">
+        <a href="../index.html" data-ar="الموقع" data-en="Website">الموقع</a>
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container auth-wrap">
+      <img class="auth-logo" src="../images/logo.jpg" alt="">
+      <h1 class="center" style="margin-bottom:.3rem" data-ar="بوابة أولياء الأمور والمدرسين" data-en="Parents &amp; Teachers Portal">بوابة أولياء الأمور والمدرسين</h1>
+      <p class="center muted" style="margin-bottom:1.5rem" data-ar="دروس أطفالكم وواجباتهم في مكان واحد" data-en="Your children’s lessons and activities in one place">دروس أطفالكم وواجباتهم في مكان واحد</p>
+
+      <div class="panel">
+        <div class="tabs" id="tabs">
+          <button type="button" data-tab="login" class="active" data-ar="دخول" data-en="Log in">دخول</button>
+          <button type="button" data-tab="signup" data-ar="تسجيل جديد" data-en="Sign up">تسجيل جديد</button>
+        </div>
+
+        <!-- دخول -->
+        <form class="form" id="loginForm" data-pane="login">
+          <label class="field"><span data-ar="الإيميل" data-en="Email">الإيميل</span>
+            <input type="email" name="email" required autocomplete="email" dir="ltr">
+          </label>
+          <label class="field"><span data-ar="كلمة المرور" data-en="Password">كلمة المرور</span>
+            <input type="password" name="password" required autocomplete="current-password" dir="ltr">
+          </label>
+          <button class="btn btn-primary" type="submit" data-ar="دخول" data-en="Log in">دخول</button>
+          <button class="link-btn center" type="button" id="forgotLink" data-ar="نسيت كلمة المرور؟" data-en="Forgot your password?">نسيت كلمة المرور؟</button>
+        </form>
+
+        <!-- تسجيل جديد بالكود -->
+        <form class="form" id="signupForm" data-pane="signup" hidden>
+          <div class="notice" data-ar="أدخل <b>كود التفعيل</b> اللي استلمته من الروضة. لو عندك أكثر من طفل، تقدر تضيف أكوادهم بعد الدخول."
+               data-en="Enter the <b>activation code</b> you received from the kindergarten. If you have more than one child, you can add their codes after logging in.">
+            أدخل <b>كود التفعيل</b> اللي استلمته من الروضة. لو عندك أكثر من طفل، تقدر تضيف أكوادهم بعد الدخول.
+          </div>
+          <label class="field"><span data-ar="كود التفعيل" data-en="Activation code">كود التفعيل</span>
+            <input type="text" name="code" required placeholder="JW-XXXX-XXXX" dir="ltr" autocapitalize="characters" autocomplete="off">
+          </label>
+          <label class="field"><span data-ar="الاسم الكامل" data-en="Full name">الاسم الكامل</span>
+            <input type="text" name="full_name" required autocomplete="name">
+          </label>
+          <label class="field"><span data-ar="رقم الجوال" data-en="Mobile number">رقم الجوال</span>
+            <input type="tel" name="phone" required placeholder="3XXXXXXX" dir="ltr" autocomplete="tel">
+          </label>
+          <label class="field"><span data-ar="الإيميل" data-en="Email">الإيميل</span>
+            <input type="email" name="email" required autocomplete="email" dir="ltr">
+          </label>
+          <label class="field"><span data-ar="كلمة المرور (8 أحرف على الأقل)" data-en="Password (at least 8 characters)">كلمة المرور (8 أحرف على الأقل)</span>
+            <input type="password" name="password" required minlength="8" autocomplete="new-password" dir="ltr">
+          </label>
+          <label class="check">
+            <input type="checkbox" name="agree" required>
+            <span data-ar="أوافق على <a href=&quot;../privacy.html&quot; target=&quot;_blank&quot; style=&quot;color:var(--pink)&quot;>سياسة الخصوصية</a>"
+                  data-en="I agree to the <a href=&quot;../privacy.html&quot; target=&quot;_blank&quot; style=&quot;color:var(--pink)&quot;>privacy policy</a>">
+              أوافق على <a href="../privacy.html" target="_blank" style="color:var(--pink)">سياسة الخصوصية</a>
+            </span>
+          </label>
+          <button class="btn btn-primary" type="submit" data-ar="إنشاء الحساب" data-en="Create account">إنشاء الحساب</button>
+        </form>
+
+        <!-- نسيت كلمة المرور -->
+        <form class="form" id="forgotForm" data-pane="forgot" hidden>
+          <p data-ar="اكتب إيميلك وبنرسل لك رابط لتغيير كلمة المرور." data-en="Enter your email and we’ll send you a link to reset your password.">اكتب إيميلك وبنرسل لك رابط لتغيير كلمة المرور.</p>
+          <label class="field"><span data-ar="الإيميل" data-en="Email">الإيميل</span>
+            <input type="email" name="email" required autocomplete="email" dir="ltr">
+          </label>
+          <button class="btn btn-primary" type="submit" data-ar="أرسل الرابط" data-en="Send link">أرسل الرابط</button>
+          <button class="link-btn center" type="button" data-back data-ar="رجوع للدخول" data-en="Back to log in">رجوع للدخول</button>
+        </form>
+
+        <!-- كلمة مرور جديدة (بعد رابط الإيميل) -->
+        <form class="form" id="resetForm" data-pane="reset" hidden>
+          <h2 data-ar="كلمة مرور جديدة" data-en="New password">كلمة مرور جديدة</h2>
+          <label class="field"><span data-ar="كلمة المرور الجديدة" data-en="New password">كلمة المرور الجديدة</span>
+            <input type="password" name="password" required minlength="8" autocomplete="new-password" dir="ltr">
+          </label>
+          <button class="btn btn-primary" type="submit" data-ar="حفظ" data-en="Save">حفظ</button>
+        </form>
+
+        <!-- رسالة بعد التسجيل -->
+        <div id="doneMsg" data-pane="done" hidden class="notice"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.0/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="../script.js"></script>
+  <script src="portal.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>أطفالي | روضة الجواهر</title>
+  <link rel="icon" href="../images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="portal.css">
+</head>
+<body class="portal">
+
+  <header class="site-header portal-header">
+    <div class="container nav">
+      <a href="../index.html" class="brand">
+        <img src="../images/logo.jpg" alt="شعار روضة الجواهر" width="44" height="44">
+        <span data-ar="روضة الجواهر" data-en="Aljawaher KG">روضة الجواهر</span>
+      </a>
+      <div class="portal-nav">
+        <a href="parent.html" class="active" data-ar="أطفالي" data-en="My children">أطفالي</a>
+        <a href="teacher.html" data-roles="teacher admin" hidden data-ar="الدروس" data-en="Lessons">الدروس</a>
+        <a href="admin.html" data-roles="admin" hidden data-ar="الإدارة" data-en="Admin">الإدارة</a>
+        <button class="link-btn" id="logoutBtn" type="button" data-ar="خروج" data-en="Log out">خروج</button>
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-title">
+        <div>
+          <h1><span data-ar="أهلاً" data-en="Welcome">أهلاً</span> <span id="whoami"></span> 👋</h1>
+          <p class="muted" data-ar="هذي دروس أطفالك. اضغط على أي درس عشان يحلّه طفلك." data-en="Here are your children’s lessons. Tap a lesson for your child to solve it.">هذي دروس أطفالك. اضغط على أي درس عشان يحلّه طفلك.</p>
+        </div>
+      </div>
+
+      <div id="children"><p class="empty" data-ar="جاري التحميل…" data-en="Loading…">جاري التحميل…</p></div>
+
+      <section class="panel">
+        <h2 data-ar="إضافة طفل آخر" data-en="Add another child">إضافة طفل آخر</h2>
+        <form class="form-row" id="addChildForm">
+          <label class="field"><span data-ar="كود التفعيل" data-en="Activation code">كود التفعيل</span>
+            <input type="text" name="code" required placeholder="JW-XXXX-XXXX" dir="ltr" autocomplete="off">
+          </label>
+          <button class="btn btn-teal" type="submit" data-ar="إضافة" data-en="Add">إضافة</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.0/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="../script.js"></script>
+  <script src="portal.js"></script>
+  <script src="parent.js"></script>
+</body>
+</html>
